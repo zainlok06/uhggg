@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<div style="height: 50px;"></div>
+<link rel="stylesheet" href="index.css">
+<html>
+<head>
+    <title>"Our CSP Quiz"</title>
+</head>
+<body>
+	<h1 style="text-align:center">CSP Quiz!</h1>
+    <p1 style="text-align:center" id="id01">This is a game to test your understanding of CSP concepts.</br></p1>
+    <p1>All credit for the questions goes to collegeboard.</p1>
+</body>
+    <div style = "background-color:rgba(123, 82, 105, 0.54)">
+        <h2 id="question">Question Text</h2>
+        <ul>
+            <li>
+                <input type="radio" name="answer" id="a" class="answer">
+                <label for="a" id="a_text">Answer</label>
+            </li>
+            <li>
+                <input type="radio" name="answer" id="b" class="answer">
+                <label for="b" id="b_text" >Answer</label>
+            </li>
+            <li>
+                <input type="radio" name="answer" id="c" class="answer">
+                <label for="c" id="c_text">Answer</label>
+            </li>
+            <li>
+                <input type="radio" name="answer" id="d" class="answer">
+                <label for="d" id="d_text">Answer</label>
+            </li>
+        </ul>
+        <button id="submit" >Submit</button>
+    </div>
+
+
+  </div>
+
+<script>
+const quizData = [
+    
+{
+        question:"A team of programmers is designing software. One portion of the project presents a problem for which there is not an obvious solution. After some research, the team determines that the problem is undecidable. Which of the following best explains the consequence of the problem being undecidable?",
+        a:"The problem can be solved algorithmically, but it will require an unreasonably long amount of time.",
+        b:"The problem can be solved algorithmically, but it will require an unreasonably large amount of data storage.",
+        c:"There is no possible algorithm that can be used to solve all instances of the problem.",
+        d:"There are several different possible algorithms that can solve the problem, but there is controversy about which is the most efficient.",
+        correct: "c",
+    },
+{
+        question:"A certain programming language uses 4-bit binary sequences to represent nonnegative integers. For example, the binary sequence 0101 represents the corresponding decimal value 5. Using this programming language, a programmer attempts to add the decimal values 14 and 15 and assign the sum to the variable total. Which of the following best describes the result of this operation?",
+        a:"The correct sum of 29 will be assigned to the variable total.",
+        b:"An overflow error will occur because 4 bits is not large enough to represent either of the values 14 or 15.",
+        c:"An overflow error will occur because 4 bits is not large enough to represent 29, the sum of 14 and 15.",
+        d:"A round-off error will occur because the decimal values 14 and 15 are represented as approximations due to the fixed number of bits used to represent numbers.",
+        correct: "c",
+    },
+    {
+        question:"For which of the following situations would it be best to use a heuristic in order to find a solution that runs in a reasonable amount of time?",
+        a:"Appending a value to a list of  n  elements, which requires no list elements be examined.",
+        b:"Finding the fastest route that visits every location among  n  locations, which requires  n!  possible routes be examined.",
+        c:"Performing a binary search for a score in a sorted list of  n  scores, which requires that fewer than  n  scores be examined.",
+        d:"Performing a linear search for a name in an unsorted database of  n  people, which requires that up to  n  entries be examined.",
+        correct: "b"
+    },
+    {
+        question:"A video game character can face toward one of four directions: north, south, east, and west. Each direction is stored in memory as a sequence of four bits. A new version of the game is created in which the character can face toward one of eight directions, adding northwest, northeast, southwest, and southeast to the original four possibilities. Which of the following statements is true about how the eight directions must be stored in memory?",
+        a:"Four bits are not enough to store the eight directions. Five bits are needed for the new version of the game.",
+        b:"Four bits are not enough to store the eight directions. Eight bits are needed for the new version of the game.",
+        c:"Four bits are not enough to store the eight directions. Sixteen bits are needed for the new version of the game.",
+        d:"Four bits are enough to store the eight directions.",
+        correct: "d"
+    },
+
+    {
+
+        question: "A company that develops mobile applications wants to involve users in the software development process. Which of the following best explains the benefit in having users participate?",
+        a: "Users can identify and correct errors they encounter when using released versions of the software",
+        b: "Users can review the algorithms used in the software to help improve their efficiency.",
+        c: "Users can provide documentation for program code at the end of the software development process.",
+        d: "Users can provide feedback that can be used to incorporate a variety of perspectives into the software.",
+        correct: "d",
+    },
+    {
+        question: "Which of the following is most likely to be a benefit of storing the information from each calling session in a database?",
+        a: "The company can analyze the calling session data and thereby make better business decisions.",
+        b: "The company can ensure that customer information is protected from misuse.",
+        c: "The company can reduce the costs associated with data storage.",
+        d: "The company can reduce its need for data compression.",
+        correct: "a",
+    },
+    {
+        question: "Each student that enrolls at a school is assigned a unique ID number, which is stored as a binary number. The ID numbers increase sequentially by 1 with each newly enrolled student. If the ID number assigned to the last student who enrolled was the binary number 1001 0011, what binary number will be assigned to the next student who enrolls?",
+        a: "1001 0100",
+        b: "1001 0111",
+        c: "1101 0100",
+        d: "1101 0111",
+        correct: "a",
+    },
+    {
+        question: "Which of the following best describes the ability of parallel computing solutions to improve efficiency?",
+        a: "Any problem that can be solved sequentially can be solved using a parallel solution in approximately half the time.",
+        b: "Any solutions can be broken down into smaller and smaller parallel portions, making the improvement in efficiency theoretically limitless as long as there are enough processors available.",
+        c: "The efficiency of parallel computing solutions has rarely improved the efficiency of sequential computing solutions.",
+        d: "The efficiency of a solution that can be broken down into parallel portions is still limited by a sequential portion.",
+        correct: "d",
+
+    },
+    {
+        question:"Which of the following school policies is most likely to have a positive impact on the digital divide?",
+        a:"A school allows students to bring a graphing calculator from home to complete in-class mathematics assignments.",
+        b:"A school allows students to bring a tablet computer to class every day to participate in graded quizzes.",
+        c:"A school provides a laptop or tablet computer to all students enrolled at the school.",
+        d:"A school recommends that all students purchase a computer with as much processing speed as possible so that projects run faster.",
+        correct: "c",
+    }, 
+    {
+        question:"Which of the following best explains how data is typically assembled in packets for transmission over the internet?",
+        a:"Each packet contains data to be transmitted, along with metadata containing information used for routing the data.",
+        b:"Each packet contains an excrpted version of the data to be transmitted along with metalata containong the key needed to decrypt the data.",
+        c:"Each packet contains only the metadata used to establish a direct connection so that the data can be transmitted.",
+        d:"Each packet contains multiple data files bundled together, along with metadata describing how to categorize each data file.",
+        correct: "a"
+    },
+    {
+        question:"Consider the 4-bit binary number 0011, 0110, and 1111. Which of the following decimal values is NOT equal to one of these binary numbers?",
+        a:"3",
+        b:"6",
+        c:"9",
+        d:"15",
+        correct: "c"
+    },
+    {
+        question:"Which of the following actions is most likely to raise legal or ethical concerns?",
+        a:"An analyst writes a program that scans through a database of open-access scientific journals and creates a document with links to articles written on a particular topic.",
+        b:"A musician creates a song using samples of a copyrighted work and then uses a creative commons license to publish the song",
+        c:"A computer scientist adds several features to an open-source software program that was designed by another individual",
+        d:"A public interest group alerts people to a scam that involves charging them for a program that is available for free under a creative common license",
+        correct: "b"
+    },
+    {
+        question:"A user unintentionally installs keylogging software on a computer. Which of the following is an example of how the keylogging software can be used by an unauthorized individual to gain access to computing resources",
+        a:"The software records all users inputs on the computer. the recorded information is transmitted to an unauthorized individual, who analyzes it to determine the user's login password.",
+        b:"The software gives an unauthorized individual remote access to the computer, allowing the individual to search the computer for personal information.",
+        c:"The software installs a virus on the computer and prompts the user to make a payment to the unauthorized individual to remove the virus.",
+        d:"The software prompts the user to enter personal information to verify the user's identity. This personal information is recorded and transmitted to an unauthorized individual.",
+        correct: "a"
+    },
+    {
+        question:"A programmer is creating an algorithm that will be used to turn on the motor to open the gate in a parking garage. The specifications for the algoritm are as follows. (The gate should not open when the time is outside of business hours.) (The motor should not turn on unless the gate sensor is activated.) ( The motor should not turn on if the gate is already open.) Which of the following algoritms can be used to open the gate under the appropiate conditions?",
+        a:"Check if the time is outside of business hours. if it is, check if the gate sensor is activated. if it is, check if the gate is closed. if it is, turn on the motor.",
+        b:"Check if the time is during business hours. if it is, check if the gate sensor is activated. if it is, check if the gate is open. If it is, turn on the motor",
+        c:"Check if the time is during business hours. if it is, check if the gate sensor is activated. if it is not, check if the gate is open. if it is not, turn on the motor",
+        d:"Check if the time is during business hours. if it is, check if the gate sensor is activated. if it is, check if the gate is open. if it is not, turn on the motor",
+        correct: "d"
+    },
+
+
+];
+
+const quiz= document.getElementById('quiz')
+const answerEls = document.querySelectorAll('.answer')
+const questionEl = document.getElementById('question')
+const a_text = document.getElementById('a_text')
+const b_text = document.getElementById('b_text')
+const c_text = document.getElementById('c_text')
+const d_text = document.getElementById('d_text')
+const submitBtn = document.getElementById('submit')
+const display_text =document.getElementById('id01')
+
+
+let currentQuiz = 0
+let score = 0
+
+loadQuiz()
+
+function loadQuiz() {
+
+    deselectAnswers()
+
+    const currentQuizData = quizData[currentQuiz]
+
+    questionEl.innerText = currentQuizData.question
+    a_text.innerText = currentQuizData.a
+    b_text.innerText = currentQuizData.b
+    c_text.innerText = currentQuizData.c
+    d_text.innerText = currentQuizData.d
+}
+
+function deselectAnswers() {
+    answerEls.forEach(answerEl => answerEl.checked = false)
+}
+
+function getSelected() {
+    let answer
+    answerEls.forEach(answerEl => {
+        if(answerEl.checked) {
+            answer = answerEl.id
+        }
+    })
+    return answer
+}
+
+
+submitBtn.addEventListener('click', () => {
+    const answer = getSelected()
+    if(answer) {
+       if(answer === quizData[currentQuiz].correct) {
+           score++
+       }
+
+       currentQuiz++
+
+       if(currentQuiz < quizData.length) {
+           loadQuiz()
+       } else {
+           document.getElementById("id01").innerHTML = "You got " + score + " out of 15";
+       }
+    }
+})
+</script>
+</html>
